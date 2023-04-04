@@ -1,7 +1,10 @@
+import csv
+import os
 import unittest
 
 from Person import Person
 
+USER_ACCOUNT = 'user_account'
 GIVEN_NAME_1 = "Aidan"
 GIVEN_NAME_2 = "Tom"
 FAMILY_NAME = "Smith"
@@ -12,6 +15,10 @@ class MyTestCase(unittest.TestCase):
 
     def setUp(self):
         self.person = Person("", "", "")
+
+    def tearDown(self):
+        if os.path.isfile(USER_ACCOUNT):
+            os.remove(USER_ACCOUNT)
 
     def test_default_person(self):
         check_person(self, self.person, "", "", "")
@@ -37,6 +44,30 @@ class MyTestCase(unittest.TestCase):
 
         check_person(self, person1, GIVEN_NAME_1, "", "")
         check_person(self, person2, GIVEN_NAME_2, "", "")
+
+    def test_id_is_added(self):
+        self.assertIsNotNone(self.person.id)
+
+    def test_id_is_unique(self):
+        person1 = Person("", "", "")
+        person2 = Person("", "", "")
+
+        self.assertNotEqual(person1.id, person2.id)
+
+    def test_person_is_saved(self):
+        person1 = Person(GIVEN_NAME_1, FAMILY_NAME, AGE)
+        person1.save()
+        with open(USER_ACCOUNT, newline="") as csvfile:
+            reader = csv.DictReader(csvfile)
+
+            for row in reader:
+                print(person1.given_name, person1.family_name, person1.age, person1.id, row)
+                if (person1.given_name == row['given_name'] and
+                        person1.family_name == row['family_name'] and
+                        person1.age == int(row['age']) and
+                        str(person1.id) == row['id']):
+                    return
+            self.assertTrue(False, "Person with attributes " + person1.given_name + " " + person1.family_name + " " + str(person1.age) + " " + str(person1.id) + " was not found in the csv")
 
 
 def check_person(self, person, given_name, family_name, age):
