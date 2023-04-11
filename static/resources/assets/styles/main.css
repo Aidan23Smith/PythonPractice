@@ -1,0 +1,35 @@
+h1 {
+    text-align: center;
+    font-family: Georgia, serif;
+    font-size: 50px;
+    margin: 0;
+}
+
+nav {
+    background-color: #e2e2e2;
+}
+
+body {
+    background-color: #f2f2f2;
+    text-align: center;
+}
+
+footer {
+    text-align: center;
+    font-family: Georgia, serif;
+    font-size: 50px;
+    margin: 0;
+}
+
+.image1 {
+    float: right;
+    width: auto;
+    height: 56px;
+}
+
+.foot {
+    text-align: left;
+    float: left;
+    font-size: 10px;
+    margin: 0;
+}

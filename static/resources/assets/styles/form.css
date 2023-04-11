@@ -1,0 +1,17 @@
+.form_heading {
+    border: solid 1px #2f2f2f;
+    width: 25vw;
+    max-width: 300px;
+    height: auto;
+    margin: 0;
+}
+
+.form_input {
+    width: 97.5%;
+    max-width: 292px;
+}
+
+label {
+    float: left;
+    font-size: 3vw;
+}

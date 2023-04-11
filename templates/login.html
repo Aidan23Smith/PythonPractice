@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block body %}
+<body>
+
+<div class = "div">
+  <div><center>
+    <form action="/login" method="post">
+      <p class = 'form_heading'>
+        <label for="username">Username:</label><br>
+        <input type = "text" id = "username" class = "form_input" name = "username">
+      </p>
+      <p class = 'form_heading'>
+        <label for= "password">Password:</label><br>
+        <input type = "password" id = "password" class = "form_input" name = "password">
+      </p>
+      <button type = 'submit' id = "submit" class = "submit" onclick = login()>Submit</button>
+    </form>
+
+  </center></div>
+</div>
+
+
+</body>
+{% endblock body %}
