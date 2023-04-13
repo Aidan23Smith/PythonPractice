@@ -1,17 +1,17 @@
 .form_heading {
     border: solid 1px #2f2f2f;
-    width: 25vw;
+    min-width: 270px;
     max-width: 300px;
     height: auto;
     margin: 0;
 }
 
 .form_input {
-    width: 97.5%;
+    width: 300px;
     max-width: 292px;
 }
 
 label {
     float: left;
-    font-size: 3vw;
+    font-size: 30px;
 }
